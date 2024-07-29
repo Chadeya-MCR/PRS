@@ -45,6 +45,7 @@ section {
 }
 form{
     width:auto;
+    padding: 0 10px;
 }
 
 .form-container {
@@ -62,7 +63,7 @@ form{
     color: black;
 }
 
-.field .form-input{
+form .form-input{
     display: block;
     padding:8px 17px;
     width: 95%;
@@ -72,11 +73,19 @@ form{
     border-radius: 0.3rem;
     border: 1px solid #d2d6dc;
 }
+.field.error .form-input{
+    border:1px solid red;
+}
+.field.correct .form-input{
+    border:1px solid green;
+}
 .field .error-txt{
     color:red;
-    display: block;
     font-size: 13px;
     display: none;
+}
+.field.error .error-txt{
+    display: block;
 }
 .form-input::placeholder{
     font-size: 13px;
