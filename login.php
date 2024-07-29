@@ -50,17 +50,21 @@ $conn->close();
                 <div class="box-content">
                 <h1 class="title">Prestige Electronics</h1>
                     <form class="form-container" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?> ">
-                    <div class="field">
+                    <div>
                             <label for="email" class="form-label">email</label>
-                            <input type="email" name="email" id="email" class="form-input" placeholder="Enter your email"
-                            autocomplete="off" >
-                            <div class="error-txt">Email cannot be empty</div>
+                            <div class="field">
+                                <input type="email" name="email" id="email" class="form-input" placeholder="Enter your email"
+                                autocomplete="off" >
+                                <div class="error-txt emailError">Email cannot be empty</div>
+                            </div>
                         </div>
-                        <div class="field">
+                        <div>
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-input" placeholder="Enter password"
-                            autocomplete="off" >
-                            <div class="error-txt">Password cannot be empty</div>
+                            <div class="field">
+                                <input type="password" name="password" id="password" class="form-input" placeholder="Enter password"
+                                autocomplete="off" >
+                                <div class="error-txt">Password cannot be empty</div>
+                            </div>
                         </div>
                         <button type="submit" class="form-button">LOG IN</button>
                         <div class="form-footer">
@@ -73,5 +77,55 @@ $conn->close();
             </div>
         </div>
     </section>
+<script>
+const form = document.querySelector('form');
+const password = document.getElementById("password");
+function checkInputs(){
+    const userInputs = document.querySelectorAll(".form-input")
+        for(const input of userInputs){
+            if(input.value === ""){
+                input.classList.add("error");
+                input.parentElement.classList.add("error");
+            }
+            if(userInputs [0].value !=""){checkEmailFormat();}
+            userInputs[0].addEventListener("keyup", () => checkEmailFormat())
+
+            input.addEventListener("keyup", () => {
+                if(input.value !==""){
+                    input.classList.remove("error");
+                    input.parentElement.classList.remove("error");
+                    input.classList.add("correct")
+                    input.parentElement.classList.add("correct")
+                }
+                else{
+                    input.classList.add("error");
+                    input.parentElement.classList.add("error");
+                    
+
+                }
+            });
+        }
+}
+const  checkEmailFormat =()=>{
+    const emailRegex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+    const emailErrTxt = document.querySelector(".emailError");
+    if(!email.value.match(emailRegex)){
+        email.classList.add("error")
+        email.parentElement.classList.add("error");
+            if(email.value !=""){
+                emailErrTxt.innerText = "Looks like something is bad"
+            }else{
+                emailErrTxt.innerText = "Email address can't be blank!"
+            }
+    }else{
+        email.classList.remove("error")
+        email.parentElement.classList.remove("error");
+    }
+}
+form.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    checkInputs()
+})
+</script>
 </body>
 </html>
