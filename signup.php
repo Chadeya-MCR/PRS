@@ -60,53 +60,64 @@ $conn->close();
     <title>Prestige Electronics</title>
     <link rel="stylesheet" href="css/form.css">
 </head>
-<body class="body-bg">
+<body>
     <section>
         <div class="container">
             <div class="box">
                 <div class="box-content">
                     <h1 class="title">Prestige Electronics</h1>
                     <form class="form-container" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?> ">
-                        <div class="field">
+                        <div>
                             <label for="firstname" class="form-label">firstname</label>
-                            <input type="text" name="firstname" id="firstname" class="form-input" placeholder="Enter your firstname"
-                            autocomplete="off" >
-                            <div class="error-txt">First name cannot be empty</div>
+                            <div class="field">
+                                <input type="text" name="firstname" id="firstname" class="form-input" placeholder="Enter your firstname"
+                                autocomplete="off" >
+                                <div class="error-txt">First name cannot be empty</div>
+                            </div>
                         </div>
-                        <div class="field">
+                        <div>
                             <label for="lastname" class="form-label">lastname</label>
+                            <div class="field">
                             <input type="text" name="lastname" id="lastname" class="form-input" placeholder="Enter your lastname"
                             autocomplete="off" >
                             <div class="error-txt">Lastname cannot be empty</div>
+                            </div>
                         </div>
-                        <div class="field">
+                        <div>
                             <label for="email" class="form-label">email</label>
-                            <input type="email" name="email" id="email" class="form-input" placeholder="Enter your email"
-                            autocomplete="off" >
-                            <div class="error-txt">Email cannot be empty</div>
+                            <div class="field">
+                                <input type="email" name="email" id="email" class="form-input" placeholder="Enter your email"
+                                autocomplete="off" >
+                                <div class="error-txt emailError">Email cannot be empty</div>
+                            </div>
                         </div>
-                        <div class="field">
+                        <div>
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-input" placeholder="Enter password"
-                            autocomplete="off" >
-                            <div class="error-txt">Password cannot be empty</div>
+                            <div class="field">
+                                <input type="password" name="password" id="password" class="form-input" placeholder="Enter password"
+                                autocomplete="off" >
+                                <div class="error-txt">Password cannot be empty</div>
+                            </div>
                         </div>
-                        <div class="field">
+                        <div>
                             <label for="cpassword" class="form-label">Confirm Password</label>
-                            <input type="password" name="cpassword" id="cpassword" class="form-input" placeholder="Re-enter password"
-                            autocomplete="off" >
-                            <div class="error-txt">Please re enter password</div>
+                            <div class="field">
+                                <input type="password" name="cpassword" id="cpassword" class="form-input" placeholder="Re-enter password"
+                                autocomplete="off" >
+                                <div class="error-txt">Please re enter password</div>
+                            </div>
                         </div>
                         <button type="submit" id="button" class="form-button">Create Account</button>
                         <div class="form-footer">
                             <p class="footer-text">
                                 Already have an account? <a href="./login.php" class="footer-link" rel="noopener noreferrer">Log in</a>
                             </p>
-                        </div>B
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    <script src="js/formValidation.js"></script>
 </body>
 </html>
