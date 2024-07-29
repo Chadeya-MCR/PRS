@@ -1,40 +1,58 @@
 const form = document.querySelector('form');
-const firstname = document.getElementById("firstname");
-const lastname = document.getElementById("lastname");
-const email = document.getElementById("email");
 const password = document.getElementById("password");
-const confirmed_password = document.getElementById("cpassword");
-const button = document.getElementById("button")
-
 //console.log("hello world")
 
-function checkInputs (){
-    const userInputs = document.querySelectorAll(".form-input");
-    //loop thru all the inputs to check if they are empty
-    for(let input of userInputs){
-        if(input ===""){
-            console.log("userinputs are empty")
-            input.classList.add("error");
-            input.parentElement.add("error");
-        }
-        input.addEventListener("keyup", ()=>{
-            if(input !=""){
-                input.classList.remove("error");
-                input.parentElement.remove("error");
-            }else{
+function checkInputs(){
+    const userInputs = document.querySelectorAll(".form-input")
+    
+        for(const input of userInputs){
+            if(input.value === ""){
                 input.classList.add("error");
-                input.parentElement.add("error");
+                input.parentElement.classList.add("error");
             }
-        })
+            //call the checkEmail() func to validate the email
+            if(userInputs [2].value !=""){checkEmailFormat();}
+            userInputs[2].addEventListener("keyup", () => checkEmailFormat())
+
+            input.addEventListener("keyup", () => {
+                if(input.value !==""){
+                    input.classList.remove("error");
+                    input.parentElement.classList.remove("error");
+                    //input.classList.add("correct")
+                    //input.parentElement.classList.add("correct")
+                }
+                else{
+                    input.classList.add("error");
+                    input.parentElement.classList.add("error");
+                }
+            });
+        }
+}
+//check passowrd lenght
+function checkPasswordLengt(){
+    if(!password){
+        
     }
 }
 
-function validateEmail () {
-    const emailregex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-};
-button.addEventListener("click", (e)=>{
-    console.log('hello world')
+const  checkEmailFormat =()=>{
+    const emailRegex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+    const emailErrTxt = document.querySelector(".emailError");
+    if(!email.value.match(emailRegex)){
+        email.classList.add("error")
+        email.parentElement.classList.add("error");
+            if(email.value !=""){
+                emailErrTxt.innerText = "Looks like something is bad"
+            }else{
+                emailErrTxt.innerText = "Email address can't be blank!"
+            }
+    }else{
+        email.classList.remove("error")
+        email.parentElement.classList.remove("error");
+    }
+}
+form.addEventListener("submit", (e)=>{
+    //console.log('hello world')
     e.preventDefault();
     checkInputs()
 })
-
